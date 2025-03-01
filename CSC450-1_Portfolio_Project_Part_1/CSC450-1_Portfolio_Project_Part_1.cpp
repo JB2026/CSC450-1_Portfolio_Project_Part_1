@@ -45,13 +45,23 @@ bool incrementerFinished = false;
 Counter counter;
 
 int main() {
-    // Create the threads and call the counter methods with the number of iterations
-    std::thread incrementThread(incrementCounter, 20);
-    std::thread decrementThread(decrementCounter, 20);
+    try {
+        // Create the threads and call the counter methods with the number of iterations
+        std::thread incrementThread(incrementCounter, 20);
+        std::thread decrementThread(decrementCounter, 20);
 
-    // Join the threads
-    incrementThread.join();
-    decrementThread.join();
+        // Join the threads
+        incrementThread.join();
+        decrementThread.join();
+        
+        // Catch standard exceptions and output an error string and what the exception is
+    } catch(std::exception& e) {
+        cout<< "\nThere was an exception thrown: "<< e.what() <<endl;
+        
+        // Catch unexpected non standard exceptions and output an error string
+    } catch (...) {
+        cout<< "\nThere was an unknown exception thrown."<<endl;
+    }
 
     // Main Function return Statement
     return 0;
