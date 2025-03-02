@@ -56,11 +56,11 @@ int main() {
         
         // Catch standard exceptions and output an error string and what the exception is
     } catch(std::exception& e) {
-        cout<< "\nThere was an exception thrown: "<< e.what() <<endl;
+        std::cout<< "\nThere was an exception thrown: "<< e.what() <<std::endl;
         
         // Catch unexpected non standard exceptions and output an error string
     } catch (...) {
-        cout<< "\nThere was an unknown exception thrown."<<endl;
+        std::cout<< "\nThere was an unknown exception thrown."<<std::endl;
     }
 
     // Main Function return Statement
